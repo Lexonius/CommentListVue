@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+</head>
+<body>
+    <!-- <div id="app">
+        <h1 >
+            {{ message }}
+        </h1>
+    </div>
+    <div id="app-2">
+        <span v-bind:title="message">
+          Наведи на меня курсор на пару секунд,
+          чтобы увидеть динамически связанное значение title!
+        </span>
+      </div>
+
+    <div id="app-4">
+      <ol>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ol>
+    </div> -->
+    <div id="app-5" v-bind:style ="styleBlock">
+      <div class="form" v-bind:style ="styleForm">
+        <input v-on:keyup="inputChangeHandler" class="first" v-bind:style ="styleInput" v-model="valueName" placeholder="Ваше имя" text-align="center">
+        <input v-on:keyup="inputChangeHandler" class="first" v-bind:style ="styleInput" v-model="valueComment" placeholder="Комментарий">
+        <button @click="addComment" v-bind:style ="styleButton">Add comment</button>
+        <div v-bind:style ="historyBlock">
+          <ul v-if="removeComments.length" v-bind:style ="styleRemovedList">
+              <li v-for="removeComment in removeComments" :key="removeComment.id" v-bind:style ="styleRemovedComment"> 
+                <div v-bind:style ="styleRemovedCommentCenter">
+                  <div v-bind:style ="styleRemovedCommentCenterTop">
+                    <div >
+                      {{ removeComment.name }}
+                    </div>
+                      <div>
+                        {{ removeComment.date.weekDay }}.
+                        {{ removeComment.date.month }}.
+                        {{ removeComment.date.year }}
+                        {{ removeComment.date.hour }}:
+                        {{ removeComment.date.minutes }}
+                      </div>
+                  </div>
+                  <div class="styleCommentCenterBottom">
+                    {{ removeComment.comment }}
+                  </div>
+                </div>
+                <div v-bind:style ="styleCommentRight">
+                  <img src="./img/add.png" @click="addReverseComment(removeComment.id)" v-bind:style ="styleButtonRemove">
+                </div>
+              </li>
+          </ul>
+          <div v-else>Изменений нет</div>
+        </div>
+      </div>
+      <div class="comment__block--wrap" v-bind:style ="styleCommentWrap">
+        <div class="comment__block" v-bind:style ="styleCommentBlock">
+          <ul v-if="comments.length" v-bind:style ="styleList">
+              <li v-for="comment in comments" :key="comment.id" v-bind:style ="styleComment">
+                  <img src="./img/usuario.jpeg" v-bind:style ="styleAvatar"> 
+                <div v-bind:style ="styleCommentCenter">
+                  <div v-bind:style ="styleCommentCenterTop">
+                    <div >
+                      {{ comment.name }}
+                    </div>
+                      <div>
+                        {{ comment.date.weekDay }}.
+                        {{ comment.date.month }}.
+                        {{ comment.date.year }}
+                        {{ comment.date.hour }}:
+                        {{ comment.date.minutes }}
+                      </div>
+                  </div>
+                  <div class="styleCommentCenterBottom">
+                    {{ comment.comment }}
+                  </div>
+                </div>
+                <div v-bind:style ="styleCommentRight">
+                  <img src="./img/remove.png" @click="removeComment(comment.id)" v-bind:style ="styleButtonRemove">
+                </div>
+              </li>
+            </ul>
+            <div v-else>Комментарии отсутствуют</div>
+        </div>
+        <button @click="saveComment" v-bind:style ="styleButton">save comment</button> 
+      </div>
+    </div>
+  <script src="./index.js"></script>
+</body>
+</html>
